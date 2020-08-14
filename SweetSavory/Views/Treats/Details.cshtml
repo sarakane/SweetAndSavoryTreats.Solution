@@ -6,6 +6,7 @@
 
 <h2>Treat Details</h2>
 <h3>@Html.DisplayFor(model => model.Name)</h3>
+<h4>@Html.DisplayNameFor(model => model.Price): $@Html.DisplayFor(model => model.Price)</h4>
 <hr/>
 
 @if(@Model.Flavors.Count == 0)

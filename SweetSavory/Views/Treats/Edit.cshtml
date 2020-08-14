@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SweetSavory.Models.Treat
+
+<h1>Edit</h1>
+
+<h2>Edit this treat: @Html.DisplayFor(model => model.Name)</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.TreatId)
+
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+
+    @Html.LabelFor(model => model.Price)
+    @Html.EditorFor(model => model.Price)
+
+    <input type="submit" value="Save" class="btn btn-outline-dark"/>
+}
+
+<p>@Html.ActionLink("Back to treat details", "Details", new { id = Model.TreatId })</p>
+<p>@Html.ActionLink("Back to treats", "Index")</p>

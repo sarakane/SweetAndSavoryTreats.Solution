@@ -51,5 +51,20 @@ namespace SweetSavory.Controllers
           .FirstOrDefault(Treat => Treat.TreatId == id);
       return View(thisTreat);
     }
+
+    [Authorize]
+    public ActionResult Edit(int id)
+    {
+      var thisTreat = _db.Treats.FirstOrDefault(Treats => Treats.TreatId == id);
+      return View(thisTreat);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Treat treat)
+    {
+      _db.Entry(treat).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
   }
 }
