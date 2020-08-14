@@ -44,13 +44,13 @@ namespace SweetSavory.Controllers
       }
     }
 
-    public ActionResult SignIn()
+    public ActionResult Login()
     {
       return View();
     }
 
     [HttpPost]
-    public async Task<ActionResult> SignIn(SignInViewModel model)
+    public async Task<ActionResult> Login(SignInViewModel model)
     {
       Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
       if (result.Succeeded)
