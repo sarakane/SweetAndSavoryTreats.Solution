@@ -21,7 +21,7 @@ else
     <li>@join.Treat.Name</li>
     @if (User.Identity.IsAuthenticated)
     {
-      @using (Html.BeginForm("RemoveTreat", "Flavor"))
+      @using (Html.BeginForm("RemoveTreat", "Flavors"))
       {
         @Html.Hidden("joinId", @join.TreatFlavorId)
         <input type="submit" value="Remove"/>
