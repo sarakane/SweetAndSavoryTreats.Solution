@@ -96,7 +96,7 @@ namespace SweetSavory.Controllers
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
-      var thisTreat = _db.Treats.FirstOrDefault(Treats => Treats.TreatId == id);
+      var thisTreat = _db.Treats.FirstOrDefault(reats => reats.TreatId == id);
       _db.Treats.Remove(thisTreat);
       _db.SaveChanges();
       return RedirectToAction("Index");
