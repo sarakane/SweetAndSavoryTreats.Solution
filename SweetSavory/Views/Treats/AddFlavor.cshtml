@@ -15,7 +15,7 @@
     @Html.Label("Select flavor")
     @Html.DropDownList("FlavorId")
 
-    <input type="submit" value="Add" />
+    <input type="submit" value="Add" class="btn btn-outline-dark"/>
 }
 
 <p>@Html.ActionLink("Back to treat details", "Details", new { id = Model.TreatId })</p>
