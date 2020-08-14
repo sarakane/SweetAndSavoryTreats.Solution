@@ -46,9 +46,9 @@ namespace SweetSavory.Controllers
     public ActionResult Details(int id)
     {
       var thisTreat = _db.Treats
-          .Include(Treat => Treat.Flavors)
+          .Include(treat => treat.Flavors)
           .ThenInclude(join => join.Flavor)
-          .FirstOrDefault(Treat => Treat.TreatId == id);
+          .FirstOrDefault(treat => treat.TreatId == id);
       return View(thisTreat);
     }
 
