@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SweetSavory.Models.Treat
+
+<h2>Add a flacor</h2>
+
+<h4>Add a flacor to this treat: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.TreatId)
+
+    @Html.Label("Select flavor")
+    @Html.DropDownList("FlavorId")
+
+    <input type="submit" value="Add" />
+}
+
+<p>@Html.ActionLink("Back to treat details", "Details", new { id = Model.TreatId })</p>
+<p>@Html.ActionLink("View all treats", "Index")</p>
