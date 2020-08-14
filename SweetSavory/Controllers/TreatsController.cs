@@ -55,7 +55,7 @@ namespace SweetSavory.Controllers
     [Authorize]
     public ActionResult Edit(int id)
     {
-      var thisTreat = _db.Treats.FirstOrDefault(Treats => Treats.TreatId == id);
+      var thisTreat = _db.Treats.FirstOrDefault(treats => treats.TreatId == id);
       return View(thisTreat);
     }
 
@@ -64,13 +64,13 @@ namespace SweetSavory.Controllers
     {
       _db.Entry(treat).State = EntityState.Modified;
       _db.SaveChanges();
-      return RedirectToAction("Index");
+      return RedirectToAction("Details", new { id = treat.TreatId});
     }
 
     [Authorize]
     public ActionResult AddFlavor(int id)
     {
-      var thisTreat = _db.Treats.FirstOrDefault(Treats => Treats.TreatId == id);
+      var thisTreat = _db.Treats.FirstOrDefault(treats => treats.TreatId == id);
       ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Name");
       return View(thisTreat);
     }
