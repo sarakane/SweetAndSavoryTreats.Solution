@@ -31,6 +31,7 @@ MVC web application for a bakery to market sweet and savory treats. Uses user au
 ### View locally 
 * Navigate to the newly created `SweetAndSavoryTreats.Solution` folder.
 * Navigate to the `SweetSavory` project folder.
+* In the `appsettings.json` file, change the password to match the password that you have set for the root account.
 * In the terminal, run `dotnet restore` and `dotnet build` to build the application.
 * Enter `dotnet tool install --global dotnet-ef` to install `dotnet ef` as a global tool.
 * Enter `dotnet ef database update` to build the MySQL database from the Migrations folder.
