@@ -83,7 +83,7 @@ namespace SweetSavory.Controllers
         _db.TreatFlavor.Add(new TreatFlavor() { FlavorId = FlavorId, TreatId = treat.TreatId });
         _db.SaveChanges();
       }
-      return RedirectToAction("Index");
+      return RedirectToAction("Details", new { id = treat.TreatId});
     }
 
     [Authorize]
@@ -104,12 +104,12 @@ namespace SweetSavory.Controllers
 
     [Authorize]
     [HttpPost]
-    public ActionResult DeleteFlavor(int joinId)
+    public ActionResult RemoveFlavor(int joinId)
     {
       var joinEntry = _db.TreatFlavor.FirstOrDefault(entry => entry.TreatFlavorId == joinId);
       _db.TreatFlavor.Remove(joinEntry);
       _db.SaveChanges();
-      return RedirectToAction("Index");
+      return RedirectToAction("Details", new { id = joinEntry.TreatId });
     }
   }
 }
