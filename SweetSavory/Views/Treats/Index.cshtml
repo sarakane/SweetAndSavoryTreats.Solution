@@ -2,8 +2,8 @@
   Layout = "_Layout";
 }
 
-@using SweetSavory.Models;
-@model List<SweetSavory.Models.Treat>;
+@using SweetSavory.Models
+@model List<SweetSavory.Models.Treat>
 
 <h1>Treats</h1>
 
@@ -13,10 +13,12 @@
 } 
 else
 {
+  <ul>
   @foreach (Treat treat in Model)
   {
     <li>@Html.ActionLink($"{treat.Name}", "Details", null, new { id = treat.TreatId }, new { @class="text-info"} )</li>
   }
+  </ul>
 }
 
 @if (User.Identity.IsAuthenticated)
