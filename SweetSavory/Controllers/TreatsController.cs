@@ -42,5 +42,14 @@ namespace SweetSavory.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult Details(int id)
+    {
+      var thisTreat = _db.Treats
+          .Include(Treat => Treat.Flavors)
+          .ThenInclude(join => join.Flavor)
+          .FirstOrDefault(Treat => Treat.TreatId == id);
+      return View(thisTreat);
+    }
   }
 }

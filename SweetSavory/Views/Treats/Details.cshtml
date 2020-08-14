@@ -1,0 +1,40 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SweetSavory.Models.Treat
+
+<h2>Treat Details</h2>
+<h3>@Html.DisplayFor(model => model.Name)</h3>
+<hr/>
+
+@if(@Model.Flavors.Count == 0)
+{
+  <p>This treat doesn't have any flavors!</p>
+}
+else
+{
+  <h4>Flavors for this treat:</h4>
+  <ul>
+  @foreach(var join in Model.Flavors)
+  {
+    <li>@join.Flavor.Name</li>
+    @if (User.Identity.IsAuthenticated)
+    {
+      @using (Html.BeginForm("RemoveFlavor", "Treats"))
+      {
+        @Html.Hidden("joinId", @join.TreatFlavorId)
+        <input type="submit" value="Remove"/>
+      }
+    }
+  }
+  </ul>
+}
+<p>@Html.ActionLink("Back to treats", "Index")</p>
+
+@if (User.Identity.IsAuthenticated)
+{
+  <p>@Html.ActionLink("Edit Treat", "Edit", new { id = Model.TreatId })</p>
+  <p>@Html.ActionLink("Add a Flavor", "AddFlavor", new { id = Model.TreatId })</p>
+  <p>@Html.ActionLink("Delete Treat", "Delete", new { id = Model.TreatId })</p>
+}
