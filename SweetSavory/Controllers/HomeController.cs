@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace SweetSavory.Models
 {
-  public class HomeController : HomeController
+  public class HomeController : Controller
   {
     public ActionResult Index()
     {

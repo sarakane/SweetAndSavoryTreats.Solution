@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+@using SweetSavory.ViewModels
+
+@model SignUpViewModel
+
+<h1>Sign Up</h1>
+<hr/>
+@using (Html.BeginForm("SignUp", "Account", FormMethod.Post))
+{
+    @Html.LabelFor(user => user.Email)
+    @Html.TextBoxFor(user=> user.Email)
+
+    @Html.LabelFor(user=> user.Password)
+    @Html.PasswordFor(user=> user.Password)
+
+    @Html.LabelFor(user=> user.ConfirmPassword)
+    @Html.PasswordFor(user=> user.ConfirmPassword)
+
+    <input type="submit" value="Sign up" class="btn btn-outline-dark"/>
+}
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
