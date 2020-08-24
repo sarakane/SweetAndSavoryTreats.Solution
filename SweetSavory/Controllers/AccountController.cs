@@ -52,15 +52,15 @@ namespace SweetSavory.Controllers
     [HttpPost]
     public async Task<ActionResult> Login(SignInViewModel model)
     {
-      Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
-      if (result.Succeeded)
+      if (ModelState.IsValid)
       {
-        return RedirectToAction("Index");
+        Microsoft.AspNetCore.Identity.SignInResult result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, isPersistent: true, lockoutOnFailure: false);
+        if (result.Succeeded)
+        {
+          return RedirectToAction("Index");
+        }
       }
-      else
-      {
-        return View();
-      }
+      return View();
     }
 
     [HttpPost]

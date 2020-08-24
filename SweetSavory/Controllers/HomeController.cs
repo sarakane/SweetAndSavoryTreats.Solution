@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace SweetSavory.Models
+namespace SweetSavory.Controllers
 {
   public class HomeController : Controller
   {

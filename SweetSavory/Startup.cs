@@ -32,6 +32,11 @@ namespace SweetSavory
       services.AddIdentity<ApplicationUser, IdentityRole>()
         .AddEntityFrameworkStores<SweetSavoryContext>()
         .AddDefaultTokenProviders();
+
+      services.Configure<IdentityOptions>(options =>
+      {
+        options.Password.RequireNonAlphanumeric = false;
+      });
     }
 
     public void Configure(IApplicationBuilder app)

@@ -4,12 +4,14 @@ namespace SweetSavory.ViewModels
 {
   public class SignUpViewModel
   {
-    [Required]
+    [Required()]
     [EmailAddress]
     [Display(Name = "Email")]
     public string Email { get; set; }
 
-    [Required]
+    [Required()]
+    [StringLength(50, ErrorMessage= "The {0} must be a least {2} characters long.", MinimumLength = 6)]
+    [RegularExpression(@"^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)).+$", ErrorMessage="Valid passwords inclue a lower case character, uppercase character, and a number.")]
     [DataType(DataType.Password)]
     [Display(Name = "Password")]
     public string Password { get; set; }
